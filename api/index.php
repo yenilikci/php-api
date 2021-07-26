@@ -11,6 +11,12 @@ $returnArray['status'] = false;
 $mode = $_GET["mode"];
 $process = $_GET["process"];
 
-require_once 'Api/' . $mode . '/' . $process . '.php';
+$path = 'Api/' . $mode . '/' . $process . '.php';
 
-print_r($returnArray);
+//file control
+if (file_exists($path)) {
+    require_once 'Api/' . $mode . '/' . $process . '.php';
+    print_r($returnArray);
+} else {
+    die("Page is not found!");
+}
