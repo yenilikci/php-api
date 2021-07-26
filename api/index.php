@@ -5,6 +5,8 @@ require_once 'Helpers/mainHelper.php';
 $db = new Database();
 
 $returnArray = [];
+//default status res
+$returnArray['status'] = false;
 
 $mode = $_GET["mode"];
 $process = $_GET["process"];
