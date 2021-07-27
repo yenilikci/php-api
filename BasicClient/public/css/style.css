@@ -68,3 +68,11 @@ a {
   color: white;
   padding: 15px;
 }
+
+.status{
+  display: none;
+  padding: 15px;
+  background-color: chocolate;
+  text-align: center;
+  color: white;
+}

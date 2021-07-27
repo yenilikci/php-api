@@ -1,5 +1,8 @@
 <?php
 
+//cors
+header("Access-Control-Allow-Origin: *");
+
 //set header
 header("Content-Type:application/json;charset=utf8");
 
