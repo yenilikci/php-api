@@ -18,5 +18,5 @@ $query->execute(array(
 ));
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-$returnArray['status'] = true;
+$returnArray['status'] = true;  
 $returnArray['data'] = $result;
