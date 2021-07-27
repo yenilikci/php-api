@@ -19,4 +19,13 @@ class MainHelper
             return 0;
         }
     }
+    
+    static function getIntVariable($value)
+    {
+        if (isset($_GET[$value])) {
+            return intval($_GET[$value]);
+        } else {
+            return 0;
+        }
+    }
 }
