@@ -1,7 +1,12 @@
 <?php
+
+//set header
+header("Content-Type:application/json;charset=utf8");
+
 require_once 'Configs/database.php';
 require_once 'Helpers/mainHelper.php';
 
+//db conn
 $db = new Database();
 
 $returnArray = [];
@@ -16,7 +21,8 @@ $path = 'Api/' . $mode . '/' . $process . '.php';
 //file control
 if (file_exists($path)) {
     require_once 'Api/' . $mode . '/' . $process . '.php';
-    print_r($returnArray);
+    //convert json
+    echo json_encode($returnArray);
 } else {
     die("Page is not found!");
 }
