@@ -5,6 +5,7 @@ require_once "template/header.php";
 //session check
 if (SessionManager::control()) {
     # login success
+    SessionManager::getInfo();
 ?>
     <div class="title">Menü</div>
     <div class="category"></div>

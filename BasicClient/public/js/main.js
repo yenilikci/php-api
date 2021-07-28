@@ -14,6 +14,7 @@ $("#register").click(function () {
                 //true statement
                 $(".status").html(result.message).show();
                 //for the session
+                data['userId'] = result.userId;
                 $.post("./api/index.php", data);
                 $("form")[0].reset();
             }
@@ -37,6 +38,7 @@ $("#login").click(function () {
                 //true statement
                 $(".status").html(result.message).show();
                 //for the session
+                data['userId'] = result.userId;
                 $.post("./api/index.php", data);
                 $("form")[0].reset();
             }
@@ -134,3 +136,58 @@ let postDetail = (post_id) => {
         }
     })
 }
+
+//get comments
+let getComments = (post_id) => {
+    $.ajax({
+        url: "http://127.0.0.1/php-api/api/?mode=comment&process=list&postid=" + post_id,
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            // data found
+            if (result.data.length != 0) {
+                var html = "";
+                $.each(result.data, function (i, e) {
+                    html += '<li><b>' + e.user + '</b> <br/> ' + e.text + '</li>';
+                });
+
+                $(".comment-area").html(html);
+            }
+            //not found
+            else {
+                $(".comment-area").html("<p>Kategori yok</p>");
+            }
+        }
+    })
+}
+
+
+const serializeToJSON = str =>
+    str.split('&')
+        .map(x => x.split('='))
+        .reduce((acc, [key, value]) => ({
+            ...acc,
+            [key]: isNaN(value) ? value : Number(value)
+        }), {})
+//post comment
+$("#postComment").click(function () {
+    var data = $("form").serialize();
+    var formData = serializeToJSON(data);
+    $.ajax({
+        url: "http://127.0.0.1/php-api/api/?mode=comment&process=add",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function (result) {
+            //check error
+            if (result.status == false) {
+                $(".status").html(result.message).show();
+            } else {
+                //true statement
+                $(".status").html(result.message).show();
+                getComments(formData['postid']);
+                $("form")[0].reset();
+            }
+        }
+    })
+})

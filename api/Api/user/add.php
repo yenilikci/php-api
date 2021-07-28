@@ -40,11 +40,11 @@ if ($_POST) {
         ));
         if ($result) {
             $returnArray['status'] = true;
+            $returnArray['userId'] =  $db->db->lastInsertId();
             $returnArray['message'] = "Kullanıcı başarılı bir şekilde eklendi!";
         } else {
             $returnArray['message'] = "Kullanıcı ekleme işlemi başarısız oldu!";
         }
-
     } else {
         $returnArray['status'] = false;
         $returnArray['message'] = "Lütfen tüm alanları doldurunuz!";

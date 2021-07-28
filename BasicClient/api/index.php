@@ -5,5 +5,6 @@ if ($_POST) {
     $password = $_POST["password"];
 
     $_SESSION["email"] = $email;
-    $_SESSION["password"] = md5($password);
+    $_SESSION["password"] = $password;
+    $_SESSION['id'] = intval($_POST['userId']);
 }

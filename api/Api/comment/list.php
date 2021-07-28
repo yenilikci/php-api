@@ -36,3 +36,5 @@ foreach ($result as $key => $value) {
     $returnDataArray[$key]['date'] = $value['date'];
 }
 $returnArray['data'] = $returnDataArray;
+$returnArray['status'] = true;
+$returnArray['message'] = "Yorumlar başarıyla listelendi";
