@@ -9,8 +9,8 @@ if (!SessionManager::control()) {
 $id = intval($_GET['id']);
 ?>
 <input type="hidden" id="parent_id" value="<?= $id; ?>">
-<div class="title">Kategori</div>
-<div class="categoryChild"></div>
+<div class="title">Gönderiler</div>
+<div class="post"></div>
 
 <?php
 require_once "template/footer.php";
@@ -18,6 +18,6 @@ require_once "template/footer.php";
 
 <script>
     $(document).ready(function() {
-        childCategoryListing(<?= $id; ?>);
+        postListing(<?= $id; ?>);
     });
 </script>

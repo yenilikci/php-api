@@ -12,13 +12,20 @@ if (SessionManager::control()) {
 } else {
     # login failed
 ?>
-<div class="menu">
-    <li><a href="./login.php">Giriş Yap</a></li>
-    <li><a href="./register.php">Kayıt Ol</a></li>
-</div>
+    <div class="menu">
+        <li><a href="./login.php">Giriş Yap</a></li>
+        <li><a href="./register.php">Kayıt Ol</a></li>
+    </div>
 <?php
 }
 ?>
+
 <?php
 require_once "template/footer.php";
 ?>
+
+<script>
+    $(document).ready(function() {
+        categoryListing();
+    });
+</script>

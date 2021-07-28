@@ -19,4 +19,5 @@ $list->execute(array(
 $result = $list->fetchAll(PDO::FETCH_ASSOC);
 
 $returnArray['message'] = "Veriler başarılı bir şekilde listelendi";
+$returnArray['status'] = true;
 $returnArray['data'] = $result;
