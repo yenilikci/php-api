@@ -117,3 +117,20 @@ let postListing = (category_id) => {
         }
     })
 }
+
+//get post detail
+let postDetail = (post_id) => {
+    $.ajax({
+        url: "http://127.0.0.1/php-api/api/?mode=post&process=detail&post_id=" + post_id,
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            // status true
+            if (result.status == true) {
+                $("#title").html(result.data.name);
+                $("#image").attr("src", result.data.image);
+                $("#text").html(result.data.text);
+            }
+        }
+    })
+}
